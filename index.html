@@ -1,0 +1,304 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebGroup</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/flexslider.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    
+</head>
+<body>
+	<section class="banner" role="banner">
+        <header id="header">
+            <div class="header-content clearfix">
+                <a class="logo" href="#"><img src="images/logo.png" alt=""></a>
+                <nav class="navigation" role="navigation">
+                    <ul class="primary-nav">
+                        <li><a href="#features">Главная</a></li>
+                        <li><a href="#works">Группа</a></li>
+                        <li><a href="#teams">Задания</a></li>
+                        <li><a href="#testimonials">Работы</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="nav-toggle">Menu<span></span></a>
+            </div>
+        </header>
+    </section>
+    <section id="features" class="features section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    
+                    <div class="feature-content">
+                        <h5>Объявление</h5>
+                        <p>Для шкільних вчителів інформатики, які мають бажання розвиватись, йти в ногу з часом й технологіями. Для вчителів, які вірять в майбутнє нашої держави та прагнуть на високому рівні викладати такий важливий в наш час предмет, як інформатика. Для вчителів, які бачать в своїх учнях їх таланти, здібності та прагнення і готові допомагати їм отримувати нові затребувані знання та справжній практичний досвід.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 feature text-center">
+                    
+                    <div class="feature-content">
+                        <h5>Мотивация</h5>
+                        <p>Стратегічна мета проекту – дати поштовх до розвитку шкільної ІТ-освіти “знизу”, зокрема підвищити рівень викладання інформатики у школах, допомогти вчителям та школярам подолати так званий “страх перед технологіями”, розвіяти міф про те, що ІТ це щось надзвичайно складне і тим самим стимулювати дітей обирати ІТ в якості майбутньої професії. Тактична мета проекту – якісно підготувати вчителів інформатики викладати корисний, практичний та затребуваний матеріал школярам, а також мотивувати перепідготованих Фондом вчителів поділитися цими знаннями із максимальною кількістю школярів.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><!-- features -->
+
+
+    <section id="works" class="works section no-padding">
+    	<div class="container">
+    		<div class="row">
+    			<div class="col-md-4 col-sm-6 feature text-center">
+		        <table id="calendar">
+				  <thead>
+				    <tr><td>‹<td colspan="5"><td>›
+				    <tr><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+				  <tbody>
+				</table>
+				</div>
+				<script>
+					function calendar(id, year, month) {
+						var Dlast = new Date(year,month+1,0).getDate(),
+						    D = new Date(year,month,Dlast),
+						    DNlast = new Date(D.getFullYear(),D.getMonth(),Dlast).getDay(),
+						    DNfirst = new Date(D.getFullYear(),D.getMonth(),1).getDay(),
+						    calendar = '<tr>',
+						    month=["Январь","Февраль","Март","Апрель","Май","Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+						if (DNfirst != 0) {
+						  for(var  i = 1; i < DNfirst; i++) calendar += '<td>';
+						}else{
+						  for(var  i = 0; i < 6; i++) calendar += '<td>';
+						}
+						for(var  i = 1; i <= Dlast; i++) {
+						  if (i == new Date().getDate() && D.getFullYear() == new Date().getFullYear() && D.getMonth() == new Date().getMonth()) {
+						    calendar += '<td class="today">' + i;
+						  }else{
+						    calendar += '<td>' + i;
+						  }
+						  if (new Date(D.getFullYear(),D.getMonth(),i).getDay() == 0) {
+						    calendar += '<tr>';
+						  }
+						}
+						for(var  i = DNlast; i < 7; i++) calendar += '<td> ';
+						document.querySelector('#'+id+' tbody').innerHTML = calendar;
+						document.querySelector('#'+id+' thead td:nth-child(2)').innerHTML = month[D.getMonth()] +' '+ D.getFullYear();
+						document.querySelector('#'+id+' thead td:nth-child(2)').dataset.month = D.getMonth();
+						document.querySelector('#'+id+' thead td:nth-child(2)').dataset.year = D.getFullYear();
+						if (document.querySelectorAll('#'+id+' tbody tr').length < 6) {  // чтобы при перелистывании месяцев не "подпрыгивала" вся страница, добавляется ряд пустых клеток. Итог: всегда 6 строк для цифр
+						    document.querySelector('#'+id+' tbody').innerHTML += '<tr><td> <td> <td> <td> <td> <td> <td> ';
+						}
+						}
+						calendar("calendar", new Date().getFullYear(), new Date().getMonth());
+						// переключатель минус месяц
+						document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(1)').onclick = function() {
+						  calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)-1);
+						}
+						// переключатель плюс месяц
+						document.querySelector('#calendar thead tr:nth-child(1) td:nth-child(3)').onclick = function() {
+						  calendar("calendar", document.querySelector('#calendar thead td:nth-child(2)').dataset.year, parseFloat(document.querySelector('#calendar thead td:nth-child(2)').dataset.month)+1);
+					}
+				</script>
+				<div class="col-md-4 col-sm-6 feature text-center">
+	      	  		<a href="#" class="btn btn-large">Регистрация</a>
+	      	  	</div>
+	      	</div>
+    	</div>
+    </section><!-- works -->
+
+    <section id="teams" class="section teams">
+        <div class="container" >
+        	<table style=" width: 100%; color: black;">
+        		
+        		<tr>
+        			<th>№</th>
+        			<th>Фимилия, имя</th>
+        			<th>Класс</th>
+        		</tr>
+        		<tr>
+        			<td>1</td>
+        			<td>Иван Иванов</td>
+        			<td>11</td>
+        		</tr>
+        		<tr>
+        			<td>2</td>
+        			<td>Иван Иванов</td>
+        			<td>10</td>
+        		</tr>
+        		<tr>
+        			<td>3</td>
+        			<td>Иван Иванов</td>
+        			<td>9</td>
+        		</tr>
+        		<tr>
+        			<td>4</td>
+        			<td>Иван Иванов</td>
+        			<td>9</td>
+        		</tr>
+        	</table>
+            
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+    		<div class="feature-content">
+                        <h5>Задания</h5>
+                        <p>Идейные соображения высшего порядка, а также укрепление и развитие структуры играет важную роль в формировании существенных финансовых и административных условий. Товарищи! сложившаяся структура организации представляет собой интересный эксперимент проверки направлений прогрессивного развития.</p>
+                    </div>
+    	</div>
+    </section><!-- testimonials -->
+
+
+    <section id="download">
+        <div class="container">
+    		<div class="feature-content">
+                        <h5>Работы</h5>
+                         <section id="works" class="works section no-padding">
+				        <div class="container-fluid">
+				            <div class="row no-gutter">
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-1.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-2.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-3.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-4.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-5.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-6.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-7.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				                <div class="col-lg-3 col-md-6 col-sm-6 work">
+				                    <a href="https://www.youtube.com/" class="work-box">
+				                        <img src="images/work-8.jpg" alt="">
+				                        <div class="overlay">
+				                            <div class="overlay-caption">
+				                                <h5>Проект</h5>
+				                                <p>Описание</p>
+				                            </div>
+				                        </div>
+				                    </a>
+				                </div>
+				            </div>
+				        </div>
+				    </section><!-- works -->
+            </div>
+    	</div>
+    </section> 
+
+    <footer class="footer" style="margin-top: 50px">
+    	<div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h5>Координаты</h5>
+                        <p>Остапа Вишни<br>Школа 2, Кабинет</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h5>Социальные сети</h5>
+                        <ul class="footer-share">
+                            <li><a href="https://facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+
+    	<div class="footer-bottom">
+    	</div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.flexslider-min.js"></script>
+    <script src="js/jquery.fancybox.pack.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/retina.min.js"></script>
+    <script src="js/modernizr.js"></script>
+    <script src="js/main.js"></script>
+    
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    
+</body>
+</html>
